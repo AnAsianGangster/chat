@@ -32,3 +32,6 @@ server.listen(port);
 server.on('listening', () => {
     console.log(`Listening on port:: http://localhost:${port}`);
 });
+
+// export for tests
+module.exports = app;

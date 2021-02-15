@@ -4,8 +4,9 @@
   "description": "chat server socket.io dynamo",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server/index.js",
-    "start:server": "node server/index.js",
+    "start:dev": "nodemon server/index.js",
+    "start:prod": "node server/index.js",
+    "test:all": "mocha --exit",
     "transpile": "babel ./server --out-dir dist-server",
     "clean": "rimraf dist-server"
   },
@@ -20,6 +21,9 @@
   },
   "homepage": "https://github.com/AnAsianGangster/chat#readme",
   "devDependencies": {
+    "chai": "^4.3.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^8.3.0",
     "nodemon": "^2.0.7"
   },
   "dependencies": {
