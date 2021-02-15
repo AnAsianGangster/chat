@@ -3,6 +3,7 @@ requests.rest
 node_modules
 .DS_Store
 package-lock.json
+requests.rest
 
 # config files
 .env

@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server/index.js",
-    "start:server": "node server/index.js"
+    "start:server": "node server/index.js",
+    "transpile": "babel ./server --out-dir dist-server",
+    "clean": "rimraf dist-server"
   },
   "repository": {
     "type": "git",
@@ -21,9 +23,17 @@
     "nodemon": "^2.0.7"
   },
   "dependencies": {
+    "@babel/cli": "^7.12.16",
+    "@babel/core": "^7.12.16",
+    "@babel/preset-env": "^7.12.16",
+    "@babel/register": "^7.12.13",
+    "@withvoid/make-validation": "^1.0.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "http": "^0.0.1-security",
     "jsonwebtoken": "^8.5.1",
+    "rimraf": "^3.0.2",
     "socket.io": "^3.1.1"
-  }
+  },
+  "type": "module"
 }
