@@ -6,6 +6,9 @@ import * as io from 'socket.io';
 import WebSockets from '../utils/WebSockets.js';
 // import dynomdb config
 import DynamodbConfig from '../config/dynamodb.js';
+// import routers
+import chatRoomRouter from '../routes/chatRoom.js';
+import deleteRouter from '../routes/delete.js';
 
 const app = express();
 
@@ -18,8 +21,8 @@ app.use(express.urlencoded({ extended: false }));
 // update aws with dynamodb config
 AWS.config.update(DynamodbConfig);
 /* --------------test for dynamodb connection ---------- */
-// TODO remove this part in the future
-const dynamodb = new AWS.DynamoDB();
+// NOTE remove this part in the future
+/* const dynamodb = new AWS.DynamoDB();
 const params = {
     TableName: 'Movies',
     KeySchema: [
@@ -48,8 +51,12 @@ dynamodb.createTable(params, function (err, data) {
             JSON.stringify(data, null, 2)
         );
     }
-});
+}); */
 /* ----------------------------------------------------- */
+
+// mount routes
+app.use('room', chatRoomRouter); // NOTE jwt?
+app.use('/delete', deleteRouter);
 
 /* catch 400, and handover to error handler */
 app.use('*', (req, res) => {
