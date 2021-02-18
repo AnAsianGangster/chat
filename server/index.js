@@ -1,8 +1,12 @@
+import AWS from 'aws-sdk';
 import http from 'http';
 import express from 'express';
 import * as io from 'socket.io';
 // socket configuration
 import WebSockets from '../utils/WebSockets.js';
+
+// dynomdb config
+import DynomdbConfig from '../config/dynomdb.js'
 
 const app = express();
 
@@ -12,7 +16,11 @@ app.set('port', port);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-/* catch 404, and handover to error handler */
+/* --------------test for dynamodb connection ---------- */
+AWS.config.update(DynomdbConfig);
+/* ----------------------------------------------------- */
+
+/* catch 400, and handover to error handler */
 app.use('*', (req, res) => {
     return res.status(400).json({
         success: false,
@@ -34,4 +42,4 @@ server.on('listening', () => {
 });
 
 // export for tests
-module.exports = app;
+export default app;

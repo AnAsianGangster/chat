@@ -43,13 +43,13 @@ $ git clone https://github.com/AnAsianGangster/chat.git
 Start the server in `development` environment
 
 ```sh
-$ npm start:dev
+$ npm run start:dev
 ```
 
 Start the server in `production` environment
 
 ```sh
-$ npm start:prod
+$ npm run start:prod
 ```
 
 ## Testing
@@ -57,5 +57,5 @@ $ npm start:prod
 Run all tests
 
 ```sh
-$ npm test:all
+$ npm run test:all
 ```
